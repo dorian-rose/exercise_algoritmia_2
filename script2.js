@@ -3,50 +3,43 @@
 // 2º Almacenar en otro array los números comprendidos entre el 1 y 250
 // 3º Almacenar en otro array los números comprendidos entre el 251 y 500
 
-let numeros = [];
-let array1a250 = [];
-let array251a500 = [];
+function imprimir(numeros, array1a250, array251a50) {
+  console.log(array1a250);
+  console.log(array251a50);
+  document.querySelector(".array1").innerHTML =
+    document.querySelector(".array1").innerHTML + numeros;
 
-function ejecutar2() {
-  getNumbers();
-  sort(numeros);
-}
-
-function getNumbers() {
-  for (let i = 0; i < 10; i++) {
-    let numero = parseFloat(
-      prompt(`Entra un numero entre 1 y 500 (numero ${i + 1})`)
-    );
-    if (numero != isNaN && numero > 0 && numero < 501) {
-      numeros[i] = numero;
-    } else {
-      alert("Entra un numero valido");
-    }
-  }
+  document.querySelector(".array2").innerHTML =
+    document.querySelector(".array2").innerHTML + array1a250;
+  document.querySelector(".array3").innerHTML =
+    document.querySelector(".array3").innerHTML + array251a50;
 }
 
 function sort(numeros) {
+  let array1a250 = [];
+  let array251a50 = [];
+
   for (let i = 0; i < numeros.length; i++) {
     if (numeros[i] < 251) {
       array1a250[i] = numeros[i];
     } else {
-      array251a500[i] = numeros[i];
+      array251a50[i] = numeros[i];
     }
   }
-  alert(
-    `Therese are the numbers between 1 and 250 (inclusive): ${array1a250}, and these are the numbers between 251 and 500: ${array251a500} `
-  );
+  imprimir(numeros, array1a250, array251a50);
 }
 
-function positiveNegative(numeros) {
-  for (let i = 0; i < numeros.length; i++) {
-    if (numeros[i] < 0) {
-      numerosNegativos++;
+function getNumbers() {
+  let numerosArray = [];
+  for (let i = 0; i < 10; i++) {
+    let numero = parseFloat(
+      prompt(`Entra un numero entre 1 y 500 (numero ${i + 1})`)
+    );
+    if (numero > 0 && numero < 501) {
+      numerosArray[i] = numero;
     } else {
-      numerosPositivos++;
+      alert("Entra un numero valido");
     }
   }
-  alert(
-    `There are ${numerosNegativos} negative numbers and ${numerosPositivos} positive numbers`
-  );
+  sort(numerosArray);
 }

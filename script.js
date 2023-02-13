@@ -12,15 +12,16 @@ function ejecutar() {
   getNumbers();
   parImpar(numeros);
   positiveNegative(numeros);
+  imprimir();
 }
 
 function getNumbers() {
   for (let i = 0; i < 10; i++) {
     let numero = parseFloat(prompt(`Entra el numero ${i + 1}`));
-    if (numero != isNaN) {
-      numeros[i] = numero;
-    } else {
+    if (isNaN(numero)) {
       alert("Entra un numero valido");
+    } else {
+      numeros[i] = numero;
     }
   }
 }
@@ -33,9 +34,6 @@ function parImpar(numeros) {
       numeroDeImpares++;
     }
   }
-  alert(
-    `There are ${numeroDeImpares} odd numbers and ${numeroDePares} even numbers`
-  );
 }
 
 function positiveNegative(numeros) {
@@ -46,12 +44,14 @@ function positiveNegative(numeros) {
       numerosPositivos++;
     }
   }
-  alert(
-    `There are ${numerosNegativos} negative numbers and ${numerosPositivos} positive numbers`
-  );
 }
 
-// Se solicitan 10 números enteros comprendidos entre 1 y 500, estos números se almacenarán en un array.
-// 	1º Almacenar todos los números en un array
-// 2º Almacenar en otro array los números comprendidos entre el 1 y 250
-// 3º Almacenar en otro array los números comprendidos entre el 251 y 500
+function imprimir() {
+  document.querySelector(".result").innerHTML =
+    document.querySelector(".result").innerHTML +
+    ` Hay ${numerosNegativos} numeros negativos y ${numerosPositivos} numeros positivos`;
+
+  document.querySelector(".result-pares").innerHTML =
+    document.querySelector(".result-pares").innerHTML +
+    ` Hay ${numeroDeImpares} numeros impares y ${numeroDePares} pares`;
+}
