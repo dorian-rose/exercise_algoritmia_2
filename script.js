@@ -3,7 +3,7 @@
 //  2º Cuantos son negativos
 //  3º Cuantos son pares
 let numeros = [];
-let numeroDeImpares = 0;
+
 let numeroDePares = 0;
 let numerosNegativos = 0;
 let numerosPositivos = 0;
@@ -18,20 +18,28 @@ function ejecutar() {
 function getNumbers() {
   for (let i = 0; i < 10; i++) {
     let numero = parseFloat(prompt(`Entra el numero ${i + 1}`));
-    if (isNaN(numero)) {
+    numeros.push(validar(numero));
+    /*if (isNaN(numero)) {
       alert("Entra un numero valido");
     } else {
       numeros[i] = numero;
-    }
+    }*/
   }
+}
+
+function validar(valor) {
+  while (isNaN(valor)) {
+    numero = parseFloat(
+      prompt(`Numero no valido, entra de nuevo el numero ${i + 1}`)
+    );
+  }
+  return valor;
 }
 
 function parImpar(numeros) {
   for (let i = 0; i < numeros.length; i++) {
     if (numeros[i] % 2 == 0) {
       numeroDePares++;
-    } else {
-      numeroDeImpares++;
     }
   }
 }
@@ -53,5 +61,5 @@ function imprimir() {
 
   document.querySelector(".result-pares").innerHTML =
     document.querySelector(".result-pares").innerHTML +
-    ` Hay ${numeroDeImpares} numeros impares y ${numeroDePares} pares`;
+    ` Hay  ${numeroDePares} numeros pares`;
 }
